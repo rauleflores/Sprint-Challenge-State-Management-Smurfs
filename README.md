@@ -23,21 +23,35 @@ In this challenge, you are to build a Smurfs village utilizing context or Redux 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] What problem does the context API help solve?
+
+      Context API solves the problem of prop drilling by allowing you to assign your state to a group of components and pick and choose where you want to use it.
+
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+      The store is where the app's state will live, it serves as a source that any component can 'hook' into and draw from. It is known as the 'single source of truth' because it is the only place state should be updated from when using Redux.
+      Actions are how the store recieves the data that it will use to update the store.
+      Reducers take actions and the previous state and return the new state.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+  Application state - State that is available throughout your entire application. (Global)
+  Component state - State that lives inside individual components. Can be passed to children by way of props. (Local)
+  Component state is better suited to smaller, self-contained apps.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-- [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
+
+* [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
 
 ## Project Set Up
 
 Follow these steps to set up your project:
 
-- [ ] `fork & clone` this repository.
-- [ ] `cd` into the forked copy of this repository.
-- [ ] **RUN** `npm install` to retrieve all `server-side` the dependencies.
-- [ ] **RUN** `npm start` to get your API up and running on `http://localhost:3333`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
-- [ ] After your API is up and running, you can open chrome and type in `http://localhost:3333/smurfs`. You should see an array with one smurf in it returned to you. This is an array that your **API** will be using to store our Smurf Data.
-- [ ] **LOOK** at your `smurfs` directory and notice it's just a plain ol' React App that we've built using `create-react-app`.
+- [x] `fork & clone` this repository.
+- [x] `cd` into the forked copy of this repository.
+- [x] **RUN** `npm install` to retrieve all `server-side` the dependencies.
+- [x] **RUN** `npm start` to get your API up and running on `http://localhost:3333`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
+- [x] After your API is up and running, you can open chrome and type in `http://localhost:3333/smurfs`. You should see an array with one smurf in it returned to you. This is an array that your **API** will be using to store our Smurf Data.
+- [x] **LOOK** at your `smurfs` directory and notice it's just a plain ol' React App that we've built using `create-react-app`.
 - [ ] **Open** `src/index.js` to make sure that your app is ready to roll with the proper middleware.
 - [ ] **cd** into `smurfs` and run `npm install` to retrieve the client side dependencies.
 - [ ] **RUN** `npm start` to fire up your React application. There ought to be a pretty little message awaiting you welcoming you to the app. `Follow` the prompting.
@@ -60,12 +74,12 @@ Follow these steps to set up your project:
 
 ```js
 [
-  {
-    name: "Brainey",
-    age: 200,
-    height: "5cm",
-    id: 0
-  }
+	{
+		name: "Brainey",
+		age: 200,
+		height: "5cm",
+		id: 0,
+	},
 ];
 ```
 
@@ -93,18 +107,18 @@ Example of object created in Smurf DB:
 
 ```js
 [
-  {
-    name: "Brainey",
-    age: 200,
-    height: "5cm",
-    id: 0
-  },
-  {
-    name: "Sleepy",
-    age: 200,
-    height: "5cm",
-    id: 1
-  }
+	{
+		name: "Brainey",
+		age: 200,
+		height: "5cm",
+		id: 0,
+	},
+	{
+		name: "Sleepy",
+		age: 200,
+		height: "5cm",
+		id: 1,
+	},
 ];
 ```
 
@@ -153,11 +167,11 @@ Example:
 
 ```js
 output: [
-  {
-    name: "Sleepy",
-    age: 200,
-    height: "5cm",
-    id: 1
-  }
+	{
+		name: "Sleepy",
+		age: 200,
+		height: "5cm",
+		id: 1,
+	},
 ];
 ```
