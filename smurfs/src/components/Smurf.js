@@ -3,9 +3,9 @@ import { getSmurfs } from "../actions";
 import { connect } from "react-redux";
 
 const Smurfs = ({ getSmurfs, smurfs, pending, error }) => {
-	// useEffect(() => {
-	// 	getSmurfs();
-	// }, [getSmurfs]);
+	useEffect(() => {
+		getSmurfs();
+	}, [getSmurfs]);
 
 	if (pending) {
 		return <h2>Loading...</h2>;
@@ -13,9 +13,6 @@ const Smurfs = ({ getSmurfs, smurfs, pending, error }) => {
 
 	return (
 		<>
-			<div>
-				<button onClick={getSmurfs}>click</button>
-			</div>
 			<div>
 				{smurfs.map((smurf) => {
 					return (

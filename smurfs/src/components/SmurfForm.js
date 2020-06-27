@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
+import { addSmurf } from "../actions";
 
-const AddSmurf = (props) => {
-	const [formState, setFormState] = useState({
+const SmurfForm = (props) => {
+	const [smurf, setSmurf] = useState({
 		name: "",
 		age: "",
 		height: "",
 	});
 
 	const handleChanges = (e) => {
-		setFormState({
-			...formState,
+		setSmurf({
+			...smurf,
 			[e.target.name]: e.target.value,
 		});
 	};
 
 	const formSubmit = (e) => {
 		e.preventDefault();
-		setFormState({
-			name: "",
-			age: "",
-			height: "",
-		});
+		console.log("form props", props);
+		const smurfToAdd = smurf;
+		console.log("smurf:", smurfToAdd);
+		addSmurf(smurfToAdd);
 	};
 
 	return (
@@ -29,21 +30,21 @@ const AddSmurf = (props) => {
 			<label htmlFor="name">Name</label>
 			<input
 				name="name"
-				value={formState.name}
+				value={smurf.name}
 				placeholder="Name"
 				onChange={handleChanges}
 			></input>
 			<label htmlFor="age">Age</label>
 			<input
 				name="age"
-				value={formState.age}
+				value={smurf.age}
 				placeholder="Age"
 				onChange={handleChanges}
 			></input>
 			<label htmlFor="height">Height</label>
 			<input
 				name="height"
-				value={formState.height}
+				value={smurf.height}
 				placeholder="Height"
 				onChange={handleChanges}
 			></input>
@@ -53,7 +54,11 @@ const AddSmurf = (props) => {
 };
 
 const mapStateToProps = (state) => {
-	return state;
+	return {
+		smurfs: state.smurfs,
+		pending: state.pending,
+		error: state.error,
+	};
 };
 
-export default connect(mapStateToProps, {})(AddSmurf);
+export default connect(mapStateToProps, { addSmurf })(SmurfForm);

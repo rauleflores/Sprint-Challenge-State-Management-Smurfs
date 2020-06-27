@@ -2,6 +2,9 @@ import {
 	GET_SMURFS_BEGIN,
 	GET_SMURFS_SUCCESS,
 	GET_SMURFS_ERROR,
+	ADD_SMURFS_BEGIN,
+	ADD_SMURFS_SUCCESS,
+	ADD_SMURFS_ERROR,
 } from "../actions";
 
 const initialState = {
@@ -31,6 +34,19 @@ export const reducer = (state = initialState, action) => {
 				pending: false,
 				error: action.error,
 				smurfs: [],
+			};
+		case ADD_SMURFS_BEGIN:
+			return {
+				...state,
+				pending: true,
+				error: null,
+			};
+		case ADD_SMURFS_SUCCESS:
+			return {
+				...state,
+				pending: false,
+				error: null,
+				smurfs: [...state.smurfs, action.payload],
 			};
 		default:
 			return state;
