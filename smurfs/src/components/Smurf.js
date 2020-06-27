@@ -2,10 +2,14 @@ import React, { useEffect } from "react";
 import { getSmurfs } from "../actions";
 import { connect } from "react-redux";
 
-const Smurfs = ({ getSmurfs, smurfs, isFetching, error }) => {
+const Smurfs = ({ getSmurfs, smurfs, pending, error }) => {
 	// useEffect(() => {
 	// 	getSmurfs();
 	// }, [getSmurfs]);
+
+	if (pending) {
+		return <h2>Loading...</h2>;
+	}
 
 	return (
 		<>
