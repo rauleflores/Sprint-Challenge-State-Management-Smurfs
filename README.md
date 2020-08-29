@@ -36,11 +36,15 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
   Application state - State that is available throughout your entire application. (Global)
   Component state - State that lives inside individual components. Can be passed to children by way of props. (Local)
-  Component state is better suited to smaller, self-contained apps.
+  App state is useful for apps that don't have many children. Component state is good for apps that are nested several layers deep.
 
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 
+  A thunk (Redux) allows us to make our actions asynchronous. Thunks change actions by enabling them to return functions.
+
 * [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
+
+  The more I understand Redux, the more I like it. Even though it's abstract nature is frustrating, it's very useful for managing large amounts of state. I really like the way the store passes it's data to components. map(State/Dispatch)ToProps
 
 ## Project Set Up
 
@@ -97,7 +101,7 @@ Example of the shape of data to be sent to the `POST` endpoint:
 }
 ```
 
-- [ ] Double check to make sure that a smurf is created correctly once your functionality is built out.
+- [x] Double check to make sure that a smurf is created correctly once your functionality is built out.
 
 Initially Brainey will be in the array, but it takes more than one smurf to make the village. Be sure to add a few smurfs to populate our smurf village.
 
@@ -161,7 +165,7 @@ For this endpoint to work, all you need is an id sent up as part of the request 
 
 If your delete worked, you'll get a an array back with all of the smurfs but with your requested smurf removed.
 
-- [ ] You don't need any input beyond the url parameter of the smurf, so if we send up a delete request to `/smurfs/123` then you'll remove the smurf by that id.
+- [x] You don't need any input beyond the url parameter of the smurf, so if we send up a delete request to `/smurfs/123` then you'll remove the smurf by that id.
 
 Example:
 

@@ -4,7 +4,6 @@ import {
 	GET_SMURFS_ERROR,
 	ADD_SMURFS_BEGIN,
 	ADD_SMURFS_SUCCESS,
-	ADD_SMURFS_ERROR,
 	DELETE_SMURF_BEGIN,
 	DELETE_SMURF_SUCCESS,
 	DELETE_SMURF_ERROR,
@@ -62,6 +61,12 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				pending: false,
 				smurfs: action.payload,
+			};
+		case DELETE_SMURF_ERROR:
+			return {
+				...state,
+				pending: false,
+				err: action.error,
 			};
 		default:
 			return state;
