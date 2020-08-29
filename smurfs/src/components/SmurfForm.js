@@ -8,6 +8,7 @@ const SmurfForm = (props) => {
 		name: "",
 		age: "",
 		height: "",
+		editing: false,
 	});
 
 	const handleChanges = (e) => {
@@ -29,6 +30,7 @@ const SmurfForm = (props) => {
 	return (
 		<form
 			onSubmit={() => {
+				console.log(smurf);
 				dispatch({ type: ADD_SMURFS_BEGIN });
 				axios.post("http://localhost:3333/smurfs", smurf).then((res) => {
 					console.log("addSmurf res:", res);

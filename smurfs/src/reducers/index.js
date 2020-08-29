@@ -5,6 +5,9 @@ import {
 	ADD_SMURFS_BEGIN,
 	ADD_SMURFS_SUCCESS,
 	ADD_SMURFS_ERROR,
+	DELETE_SMURF_BEGIN,
+	DELETE_SMURF_SUCCESS,
+	DELETE_SMURF_ERROR,
 } from "../actions";
 
 const initialState = {
@@ -48,11 +51,23 @@ export const reducer = (state = initialState, action) => {
 				error: null,
 				smurfs: [...state.smurfs, action.payload],
 			};
+		case DELETE_SMURF_BEGIN:
+			return {
+				...state,
+				pending: true,
+				err: null,
+			};
+		case DELETE_SMURF_SUCCESS:
+			return {
+				...state,
+				pending: false,
+				smurfs: action.payload,
+			};
 		default:
 			return state;
 	}
 };
 
-export const getSmurfs = (state) => state.smurfs;
-export const getSmurfsBegin = (state) => state.pending;
-export const getSmurfsError = (state) => state.error;
+// export const getSmurfs = (state) => state.smurfs;
+// export const getSmurfsBegin = (state) => state.pending;
+// export const getSmurfsError = (state) => state.error;

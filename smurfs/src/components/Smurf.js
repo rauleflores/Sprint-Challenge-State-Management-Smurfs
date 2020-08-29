@@ -1,8 +1,17 @@
 import React, { useEffect } from "react";
-import { getSmurfs } from "../actions";
+import { getSmurfs, updateSmurf, deleteSmurf } from "../actions";
 import { connect } from "react-redux";
 
-const Smurfs = ({ getSmurfs, smurfs, pending, error }) => {
+import "./Smurf.css";
+
+const Smurfs = ({
+	getSmurfs,
+	updateSmurf,
+	deleteSmurf,
+	smurfs,
+	pending,
+	error,
+}) => {
 	useEffect(() => {
 		getSmurfs();
 	}, [getSmurfs]);
@@ -17,11 +26,30 @@ const Smurfs = ({ getSmurfs, smurfs, pending, error }) => {
 				{smurfs.map((smurf) => {
 					return (
 						<>
-							<div>
-								<p>{smurf.name}</p>
-								<span>{smurf.age}</span>
-								<div></div>
-								<span>{smurf.height}</span>
+							<div className="smurfDiv">
+								<div>
+									<p>{smurf.name}</p>
+									<span>{smurf.age}</span>
+									<br />
+									<span>{smurf.height}</span>
+								</div>
+								<div className="smurfButtons">
+									<button
+										onClick={() => {
+											console.log(smurf);
+										}}
+									>
+										Edit
+									</button>
+									<button
+										onClick={() => {
+											console.log(smurf);
+											deleteSmurf(smurf.id);
+										}}
+									>
+										Delete
+									</button>
+								</div>
 							</div>
 						</>
 					);
@@ -40,4 +68,8 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, { getSmurfs })(Smurfs);
+export default connect(mapStateToProps, {
+	getSmurfs,
+	updateSmurf,
+	deleteSmurf,
+})(Smurfs);
