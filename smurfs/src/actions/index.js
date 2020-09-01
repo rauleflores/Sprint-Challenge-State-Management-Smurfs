@@ -39,11 +39,11 @@ export const addSmurf = (newSmurf) => (dispatch) => {
 	});
 };
 
-export const updateSmurf = (smurfID, updatedSmurf) => (dispatch) => {
+export const updateSmurf = (updatedSmurf) => (dispatch) => {
 	dispatch({ type: UPDATE_SMURFS_BEGIN });
 	axios
-		.post(`http://localhost:3333/smurfs/${smurfID}`, { updatedSmurf })
-		.then((res) => res.data)
+		.post(`http://localhost:3333/smurfs/${updatedSmurf.id}`, updatedSmurf)
+		.then((res) => console.log(res.data))
 		.catch((err) =>
 			dispatch({
 				type: UPDATE_SMURFS_ERROR,

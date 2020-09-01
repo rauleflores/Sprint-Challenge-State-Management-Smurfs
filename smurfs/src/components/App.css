@@ -1,3 +1,19 @@
 .App {
-  text-align: center;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.apph1Div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.apph1 {
+	background-color: lavender;
+	height: 50px;
+	width: 450px;
+	padding-top: 10px;
+	align-content: center;
 }
